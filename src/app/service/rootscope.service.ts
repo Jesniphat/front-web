@@ -6,24 +6,21 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 export class RootscopeService {
   // Observable navItem source
   // public data:any;
-  private _showNav = new BehaviorSubject<any>({});
-  private _logindata = new BehaviorSubject<any>("");
+  public _showNav = new BehaviorSubject<any>({});
+  public _cart = new BehaviorSubject<any>({});
   
   constructor() { }
 
   // Observable navItem stream
   showNav$ = this._showNav.asObservable();
-  loginData$ = this._logindata.asObservable();
+  cartData$ = this._cart.asObservable();
   // service command
   loginShow(someObj:any) {
     this._showNav.next(someObj);
   }
 
-  setLoginData(obj:any){
-    this._logindata.next(obj);
-    // if(obj != "" && obj != undefined){
-    //   let dataObj = JSON.parse(obj);
-    //   this.data = dataObj;
-    // }
+  cartSet(cartObj:any) {
+    this._cart.next(cartObj);
   }
+
 }
