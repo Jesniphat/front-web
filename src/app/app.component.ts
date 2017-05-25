@@ -8,7 +8,8 @@ declare var $: any;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  public title = 'app works!';
+  public productList = 'Product';
 
   constructor(
     public _elRef: ElementRef
@@ -18,5 +19,9 @@ export class AppComponent {
 
   ngOnInit() {
     console.log("start");
+  }
+
+  public ProductMenuListClick(menu:string){
+    this.productList = menu;
   }
 }
