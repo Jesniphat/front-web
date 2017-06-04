@@ -11,8 +11,7 @@
                 <a class="nav-link" href="#">Home</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="productlist" 
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{productList}}</a>
+                <a class="nav-link dropdown-toggle" href="#" id="productlist" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{productList}}</a>
                 <div class="dropdown-menu" aria-labelledby="productlist">
                     <a class="dropdown-item" (click)="ProductMenuListClick('Action')" href="#">Action</a>
                     <a class="dropdown-item" (click)="ProductMenuListClick('Another action')" href="#">Another action</a>
@@ -38,7 +37,13 @@
     </div>
 </nav>
 
-<div class="container">
+<div class="main">
     <router-outlet></router-outlet>
 </div>
-<!-- /.container -->
+
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500" preserveAspectRatio="none" style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;">
+    <defs>
+        <style type="text/css"></style>
+    </defs>
+    <text x="0" y="25" style="font-weight:bold;font-size:25pt;font-family:Arial, Helvetica, Open Sans, sans-serif">500x500</text>
+</svg>
