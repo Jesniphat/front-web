@@ -34,7 +34,12 @@ export class HomeComponent implements OnInit {
     this.slideHead = data.data;
     if (this.slideHead.length > 0) {
       for (let z = 0; z < this.slideHead.length; z++) {
-        this.slideHead[z].product_path = this.imgLink + this.slideHead[z].product_path;
+        this.slideHead[z].slider_path = this.imgLink + this.slideHead[z].pic_path;
+        if(z == 0){
+          this.slideHead[z].listbox = true;
+        }else{
+          this.slideHead[z].listbox = false;
+        }
       }
     }
     console.log(this.slideHead);
