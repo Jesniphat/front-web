@@ -9,7 +9,8 @@ export class ApiService {
     private prod:boolean = false; 
     public api:string = "http://localhost/project_shop_api/api-f.php";
     public upl:string = "http://localhost/project_shop_api/upload.php";
-    public img:string = "http://localhost/project_shop_api/";
+    // public img:string = "http://localhost/project_shop_api/";
+    public img:string = "http://192.168.99.100/";
 
   constructor(private http: Http) { 
       if(!this.prod){

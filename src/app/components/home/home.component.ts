@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from "../../service/api.service";
+declare let $: any;
 
 @Component({
   selector: 'app-home',
@@ -42,11 +43,19 @@ export class HomeComponent implements OnInit {
         }
       }
     }
-    console.log(this.slideHead);
+    $('.carousel').carousel({
+      number: this.slideHead.length
+    });
+    console.log(this.slideHead.length);
   }
 
   public getThreeProducterrorAction(error) {
     console.log("error = ", error);
+  }
+
+  public testcheck(e){
+    console.log(e.target.value);
+    console.log(e.target.checked);
   }
 
 }
