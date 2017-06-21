@@ -10,6 +10,7 @@ declare let $: any;
 export class HomeComponent implements OnInit {
   public slideHead: any[];
   public imgLink: string = "";
+  public recommendList: any[];
 
   constructor(private apiService: ApiService) { }
 
@@ -18,6 +19,7 @@ export class HomeComponent implements OnInit {
 
     this.imgLink = this.apiService.img;
     this.getThreeProduct();
+    this.getRecommendProduct();
   }
 
   public getThreeProduct() {
@@ -51,6 +53,23 @@ export class HomeComponent implements OnInit {
 
   public getThreeProducterrorAction(error) {
     console.log("error = ", error);
+  }
+
+  public getRecommendProduct(){
+    let param = {};
+    this.apiService
+      .post("/api/getRecommendProduct", param)
+      .subscribe(
+        (data) => {
+          this.recommendList = data.data
+          if (this.recommendList.length > 0) {
+            for (let z = 0; z < this.recommendList.length; z++) {
+              this.recommendList[z].img = this.imgLink + this.recommendList[z].img;
+            }
+          }
+        }, 
+        (error) => { console.log(error); }
+      );
   }
 
   public testcheck(e){
