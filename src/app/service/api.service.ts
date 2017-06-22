@@ -13,10 +13,13 @@ export class ApiService {
     public img:string = "http://192.168.99.100/";
 
   constructor(private http: Http) { 
-      if(!this.prod){
+      if(location.hostname == 'localhost'){
           this.api = "";
           this.upl = "";
         //   this.img = "?id=";
+      }else{
+          this.api = "/api-f.php";
+          this.upl = "/upload.php";
       }
   }
 

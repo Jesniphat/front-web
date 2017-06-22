@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
   public slideHead: any[];
   public imgLink: string = "";
   public recommendList: any[];
+  public newProduct: any[];
 
   constructor(private apiService: ApiService) { }
 
@@ -20,6 +21,7 @@ export class HomeComponent implements OnInit {
     this.imgLink = this.apiService.img;
     this.getThreeProduct();
     this.getRecommendProduct();
+    this.getNewProduct();
   }
 
   public getThreeProduct() {
@@ -70,6 +72,14 @@ export class HomeComponent implements OnInit {
         }, 
         (error) => { console.log(error); }
       );
+  }
+
+  public getNewProduct(){
+    this.apiService.post('/api/getNewProduct', {})
+        .subscribe(
+          res => this.newProduct = res.data ,
+          error => console.log("error => ", error)
+        )
   }
 
   public testcheck(e){
