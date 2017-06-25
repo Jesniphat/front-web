@@ -48,21 +48,24 @@
   <!-- START THE FEATURETTES -->
 
   <hr class="featurette-divider">
-
-  <div *ngFor="let newProd of newProduct; let i = index">
-    <div class="row featurette">
-      <div class="col-md-7" [ngClass]="{'push-md-5': i == 1}">
-        <h2 class="featurette-heading">{{newProd.product_name}}</h2>
-        <p class="lead">{{newProd.product_description}}</p>
+  <div class="card-deck">
+    <div class="card" *ngFor="let newProd of newProduct; let i = index">
+      <img class="card-img-top" [src]="imgLink+newProd.img" [alt]="newProd.product_name" style="max-width:253px;">
+      <div class="card-block">
+        <h4 class="card-title">{{newProd.product_name}}</h4>
+        <p class="card-text">{{newProd.product_price}} บาท</p>
       </div>
-      <div class="col-md-5" [ngClass]="{'pull-md-7': i == 1}">
-        <img class="featurette-image img-fluid mx-auto" 
-        alt="500x500" style="width: 500px; height: 500px;" 
-        [src]="imgLink+newProd.img" data-holder-rendered="true" />
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-md-4">
+            <button type="button" class="btn btn-outline-primary" (click)="viewDetail(newProd)">Detail</button>
+          </div>
+          <div class="col-md-8">
+            <button type="button" class="btn btn-outline-success" (click)="addToCart(newProd)">Add to cart</button>
+          </div>
+        </div>
       </div>
     </div>
-
-    <hr class="featurette-divider">
   </div>
 
   <!-- /END THE FEATURETTES -->

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ElementRef } from '@angular/core';
 import { ApiService } from "../../service/api.service";
 declare let $: any;
 
@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   public imgLink: string = "";
   public recommendList: any[];
   public newProduct: any[];
+  public cart:object = {};
 
   constructor(private apiService: ApiService) { }
 
@@ -85,6 +86,14 @@ export class HomeComponent implements OnInit {
   public testcheck(e){
     console.log(e.target.value);
     console.log(e.target.checked);
+  }
+
+  public viewDetail(prod){
+    console.log(prod);
+  }
+
+  public addToCart(prod){
+    
   }
 
 }
