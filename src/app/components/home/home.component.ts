@@ -93,7 +93,19 @@ export class HomeComponent implements OnInit {
   }
 
   public addToCart(prod){
-    
+    // console.log(prod);
+    let param:object = {
+      id: prod.id,
+      name: prod.product_name,
+      img: prod.img,
+      qty: 1,
+      price: parseInt(prod.product_price)
+    }
+    this.apiService.post("/api/addtocart", param)
+        .subscribe(
+          res => console.log(res),
+          error => console.log(error)
+        )
   }
 
 }
