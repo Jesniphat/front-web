@@ -48,19 +48,20 @@
   <!-- START THE FEATURETTES -->
 
   <hr class="featurette-divider">
-  <div class="card-deck">
+  <div class="card-columns">
     <div class="card" *ngFor="let newProd of newProduct; let i = index">
-      <img class="card-img-top" [src]="imgLink+newProd.img" [alt]="newProd.product_name" style="max-width:253px;">
+      <img class="card-img-top" [src]="imgLink+newProd.img" [alt]="newProd.product_name" 
+      style="max-width:100%;">
       <div class="card-block">
         <h4 class="card-title">{{newProd.product_name}}</h4>
         <p class="card-text">{{newProd.product_price}} บาท</p>
       </div>
       <div class="card-footer">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-4 text-left">
             <button type="button" class="btn btn-outline-primary" (click)="viewDetail(newProd)">Detail</button>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-8 text-right">
             <button type="button" class="btn btn-outline-success" (click)="addToCart(newProd)">Add to cart</button>
           </div>
         </div>
