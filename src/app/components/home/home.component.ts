@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, ElementRef } from '@angular/core';
 import { ApiService } from "../../service/api.service";
+import { RootscopeService } from "../../service/rootscope.service";
 declare let $: any;
+declare var toastr: any;
 
 @Component({
   selector: 'app-home',
@@ -14,7 +16,10 @@ export class HomeComponent implements OnInit {
   public newProduct: any[];
   public cart:object = {};
 
-  constructor(private apiService: ApiService) { }
+  constructor(
+    public apiService: ApiService,
+    public $rootScope:RootscopeService
+  ) { }
 
   ngOnInit() {
     console.log("start home");
@@ -23,6 +28,7 @@ export class HomeComponent implements OnInit {
     this.getThreeProduct();
     this.getRecommendProduct();
     this.getNewProduct();
+    this.getCart();
   }
 
   public getThreeProduct() {
@@ -92,6 +98,20 @@ export class HomeComponent implements OnInit {
     console.log(prod);
   }
 
+  public getCart(){
+    this.apiService.post("/api/getCart",{})
+        .subscribe(
+          (res) => { 
+            let badge = res.data;
+            this.$rootScope.cartSet({
+              'qty': badge.prod_qty,
+              'total': badge.prod_total
+            });
+          },
+          error => console.log(error)
+        );
+  }
+
   public addToCart(prod){
     // console.log(prod);
     let param:object = {
@@ -103,7 +123,15 @@ export class HomeComponent implements OnInit {
     }
     this.apiService.post("/api/addtocart", param)
         .subscribe(
-          res => console.log(res),
+          (res) => {
+            let badge = res.data;
+            // console.log(res);
+            this.$rootScope.cartSet({
+              'qty': badge.prod_qty,
+              'total': badge.prod_total
+            });
+            toastr.success('เพิ่มสินค้าสำเร็จแล้ว', 'Success!');
+          },
           error => console.log(error)
         )
   }
